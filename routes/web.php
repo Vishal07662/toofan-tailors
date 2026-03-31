@@ -9,6 +9,7 @@ require __DIR__.'/customer.php';
 
 Route::get('/', [HomeController::class, 'create'])->name('home');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get('/orders', [App\Http\Controllers\Front\OrderController::class, 'index'])->name('orderList');
 
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');

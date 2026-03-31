@@ -4,7 +4,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Models\User;
 
 
-Route::middleware(['auth', 'role:'.User::USER_ROLE_ADMIN])
+Route::middleware(['auth']) // no need to check for role in the front office
     ->prefix('account')
     ->name('customer.')
     ->group(function () {

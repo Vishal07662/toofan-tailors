@@ -23,12 +23,12 @@
                 </div>
                 <div class="login-form-actions">
                     <button type="submit" value="1" class="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 rounded font-semibold transition" name="submitLogin">login</button>
-                     <div class="mt-4 text-center text-gray-600">
+                     {{-- <div class="mt-4 text-center text-gray-600">
                             Don&apos;t have an account?
                         <a href="{{ route('register')}}" class="text-blue-500 hover:underline">
                             Register
                         </a>
-                    </div>
+                    </div> --}}
                     {{-- <button type="submit" value="1" class="btn btn-default" name="submitForgotPassword">Forgot Password?</button> --}}
                 </div>
             </div>

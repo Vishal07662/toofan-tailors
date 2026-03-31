@@ -6,11 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
+    // @todo: add order priority
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role',
+        'reference',
+        'created_by',
         'phone',
+        'order_state_id',
+        'notes',
+        'order_amount',
+        'total_paid',
     ];
 }

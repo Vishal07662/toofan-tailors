@@ -1,0 +1,15 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class OrderState extends Model
+{
+    protected $fillable = [
+        'name',
+        'color',
+        'is_final',
+        'is_cancelled',
+    ];
+}

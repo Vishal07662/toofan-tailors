@@ -50,4 +50,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function getUsersRoles()
+    { 
+        return [
+            self::USER_ROLE_SUPER_ADMIN => 'Super Admin',
+            self::USER_ROLE_ADMIN => 'Admin',
+            self::USER_ROLE_CUSTOMER => 'Customer',
+        ];
+    }
 }

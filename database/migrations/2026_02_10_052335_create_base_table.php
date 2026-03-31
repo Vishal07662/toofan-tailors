@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->timestamps();
-            $table->softDeletes();
-        });
+        // Schema::create('products', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string('name');
+        //     $table->text('description')->nullable();
+        //     $table->timestamps();
+        //     $table->softDeletes();
+        // });
 
         // order status
         Schema::create('order_states', function (Blueprint $table) {
@@ -34,33 +34,31 @@ return new class extends Migration
 
             $table->string('reference')->unique();
             $table->foreignId('created_by')->constrained('users');
-            $table->foreignId('customer_id')->constrained('users');
-
+            
             $table->foreignId('order_state_id')->constrained();
+            $table->text('phone');
             $table->text('notes')->nullable();
-            $table->decimal('order_amount', 10, 2);
+            $table->decimal('order_amount', 10, 2)->default(0);
             $table->decimal('total_paid', 10, 2)->default(0);
 
             $table->timestamps();
         });
 
-
         // order details
-       Schema::create('order_details', function (Blueprint $table) {
+        Schema::create('order_details', function (Blueprint $table) {
             $table->id();
 
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('product_id')->constrained();
+            // $table->foreignId('product_id')->constrained();
             $table->string('product_name');
-            $table->string('product_sku')->nullable();
+            $table->string('product_description')->nullable();
 
             $table->integer('quantity');
-            $table->decimal('unit_price', 10, 2);
-            $table->decimal('total_price', 10, 2);
+            $table->decimal('unit_price', 10, 2)->default(0);
+            $table->decimal('total_price', 10, 2)->default(0);
 
             $table->timestamps();
         });
-
 
         Schema::create('order_history', function (Blueprint $table) {
             $table->id();
@@ -92,7 +90,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('orders');
-        Schema::dropIfExists('products');
+        // Schema::dropIfExists('products');
         Schema::dropIfExists('order_states');
         Schema::dropIfExists('order_details');
         Schema::dropIfExists('order_history');
